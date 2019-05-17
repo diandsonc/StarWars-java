@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/diandsonc/StarWars.svg?branch=master)](https://travis-ci.com/diandsonc/StarWars)
+[![codecov](https://codecov.io/gh/diandsonc/StarWars/branch/master/graph/badge.svg)](https://codecov.io/gh/diandsonc/StarWars)
+
 Dando continuidade ao nosso processo, temos um desafio para te propor! \o/
 
 Nossos associados são aficionados por Star Wars e com isso, queremos criar um jogo com algumas informações da franquia.

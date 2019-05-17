@@ -15,8 +15,4 @@ public class SwapiListPlanet implements Serializable {
     public String previous;
     public List<SwapiPlanet> results;
 
-    public boolean hasMore() {
-        return (next != null && !next.isEmpty());
-    }
-
 }
