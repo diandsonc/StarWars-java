@@ -7,6 +7,9 @@ public class Response<T> {
 	private T data;
 	private List<String> errors;
 
+	public Response() {
+	}
+
 	public Response(T data) {
 		this.data = data;
 	}
