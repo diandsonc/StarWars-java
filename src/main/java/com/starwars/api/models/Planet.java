@@ -29,6 +29,13 @@ public class Planet {
 
     }
 
+    public Planet(String id, String nome, String clima, String terreno) {
+		this.id = id;
+        this.nome = nome;
+        this.clima = clima;
+        this.terreno = terreno;
+    }
+
     public Planet(String nome, String clima, String terreno) {
         this.nome = nome;
         this.clima = clima;
