@@ -23,7 +23,7 @@ public class Planet {
     private String terreno;
 
     @Transient
-    private Integer exibicoes;
+    private Integer aparicoes;
 
     public Planet() {
 
@@ -67,12 +67,12 @@ public class Planet {
 		this.terreno = terreno;
 	}
 
-	public Integer getExibicoes() {
-		return exibicoes;
+	public Integer getAparicoes() {
+		return aparicoes;
 	}
 
-	public void setExibicoes(Integer exibicoes) {
-		this.exibicoes = exibicoes;
+	public void setAparicoes(Integer aparicoes) {
+		this.aparicoes = aparicoes;
 	}
 
 }

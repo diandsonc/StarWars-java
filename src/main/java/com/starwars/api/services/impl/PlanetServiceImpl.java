@@ -26,7 +26,7 @@ public class PlanetServiceImpl implements PlanetService {
             SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
 
             if (apiSwapi != null) {
-                planet.setExibicoes(apiSwapi.filmsUrls.size());
+                planet.setAparicoes(apiSwapi.filmsUrls.size());
             }
         });
 
@@ -42,7 +42,7 @@ public class PlanetServiceImpl implements PlanetService {
             SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
 
             if (apiSwapi != null) {
-                planet.setExibicoes(apiSwapi.filmsUrls.size());
+                planet.setAparicoes(apiSwapi.filmsUrls.size());
             }
         });
 
@@ -58,7 +58,7 @@ public class PlanetServiceImpl implements PlanetService {
             SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
 
             if (apiSwapi != null) {
-                planet.setExibicoes(apiSwapi.filmsUrls.size());
+                planet.setAparicoes(apiSwapi.filmsUrls.size());
             }
         }
 
@@ -73,7 +73,7 @@ public class PlanetServiceImpl implements PlanetService {
         SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
 
         if (apiSwapi != null) {
-            planet.setExibicoes(apiSwapi.filmsUrls.size());
+            planet.setAparicoes(apiSwapi.filmsUrls.size());
         }
 
         return planet;
@@ -87,7 +87,7 @@ public class PlanetServiceImpl implements PlanetService {
         SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
 
         if (apiSwapi != null) {
-            planet.setExibicoes(apiSwapi.filmsUrls.size());
+            planet.setAparicoes(apiSwapi.filmsUrls.size());
         }
 
         return planet;
