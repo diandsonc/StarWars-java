@@ -3,6 +3,8 @@ package com.starwars.api.services.impl;
 import java.util.List;
 
 import com.starwars.api.models.Planet;
+import com.starwars.api.models.integrations.swapi.SwapiApi;
+import com.starwars.api.models.integrations.swapi.models.SwapiPlanet;
 import com.starwars.api.repository.PlanetRepository;
 import com.starwars.api.services.PlanetService;
 
@@ -14,30 +16,81 @@ public class PlanetServiceImpl implements PlanetService {
 
     @Autowired
     private PlanetRepository planetRepository;
-    
+
     @Override
     public List<Planet> getAll() {
-        return this.planetRepository.findAll();
+        List<Planet> planets = this.planetRepository.findAll();
+        SwapiApi swapi = new SwapiApi();
+
+        planets.forEach(planet -> {
+            SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
+
+            if (apiSwapi != null) {
+                planet.setExibicoes(apiSwapi.filmsUrls.size());
+            }
+        });
+
+        return planets;
     }
 
     @Override
     public List<Planet> findByName(String name) {
-        return this.planetRepository.findByNome(name);
+        List<Planet> planets = this.planetRepository.findByNome(name);
+        SwapiApi swapi = new SwapiApi();
+
+        planets.forEach(planet -> {
+            SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
+
+            if (apiSwapi != null) {
+                planet.setExibicoes(apiSwapi.filmsUrls.size());
+            }
+        });
+
+        return planets;
     }
 
     @Override
     public Planet findById(String id) {
-        return this.planetRepository.findById(id).orElse(null);
+        Planet planet = this.planetRepository.findById(id).orElse(null);
+
+        if (planet != null) {
+            SwapiApi swapi = new SwapiApi();
+            SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
+
+            if (apiSwapi != null) {
+                planet.setExibicoes(apiSwapi.filmsUrls.size());
+            }
+        }
+
+        return planet;
     }
 
     @Override
     public Planet add(Planet planet) {
-        return this.planetRepository.save(planet);
+        this.planetRepository.save(planet);
+
+        SwapiApi swapi = new SwapiApi();
+        SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
+
+        if (apiSwapi != null) {
+            planet.setExibicoes(apiSwapi.filmsUrls.size());
+        }
+
+        return planet;
     }
 
     @Override
     public Planet update(Planet planet) {
-        return this.planetRepository.save(planet);
+        this.planetRepository.save(planet);
+
+        SwapiApi swapi = new SwapiApi();
+        SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
+
+        if (apiSwapi != null) {
+            planet.setExibicoes(apiSwapi.filmsUrls.size());
+        }
+
+        return planet;
     }
 
     @Override

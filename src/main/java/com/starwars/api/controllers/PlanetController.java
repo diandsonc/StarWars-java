@@ -31,9 +31,10 @@ public class PlanetController {
 
     @GetMapping
     public ResponseEntity<Response<List<Planet>>> getAll() {
-        List<Planet> planet = this.planetService.getAll();
 
-        return ResponseEntity.ok(new Response<List<Planet>>(planet));
+        List<Planet> planets = this.planetService.getAll();
+
+        return ResponseEntity.ok(new Response<List<Planet>>(planets));
     }
 
     @GetMapping(path = "/search/id/{id}")
@@ -51,9 +52,9 @@ public class PlanetController {
     @GetMapping(path = "/search/name/{name}")
     public ResponseEntity<Response<List<Planet>>> findByName(@PathVariable(name = "name") String name) {
 
-        List<Planet> planet = this.planetService.findByName(name);
+        List<Planet> planets = this.planetService.findByName(name);
 
-        return ResponseEntity.ok(new Response<List<Planet>>(planet));
+        return ResponseEntity.ok(new Response<List<Planet>>(planets));
     }
 
     @PostMapping
