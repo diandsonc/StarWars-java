@@ -15,19 +15,14 @@ import org.springframework.web.client.RestTemplate;
 
 public class SwapiApi {
 
-    RestTemplate restTemplate;
-    HttpHeaders headers;
-
-    public SwapiApi() {
-        restTemplate = new RestTemplate();
-        headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        headers.add("User-Agent", SwapiApiConstants.USER_AGENT_NAME);
-    }
-
-    public SwapiPlanet GetPlanet(String name) {
+    public static SwapiPlanet GetPlanet(String name) {
         try {
-            HttpEntity<String> entity = new HttpEntity<String>("parameters", this.headers);
+            RestTemplate restTemplate = new RestTemplate();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+            headers.add("User-Agent", SwapiApiConstants.USER_AGENT_NAME);
+
+            HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
             String url = SwapiApiConstants.BASE_URL + "/planets/?search=" + name;
             ResponseEntity<SwapiListPlanet> result = restTemplate.exchange(url, HttpMethod.GET, entity, SwapiListPlanet.class);
 

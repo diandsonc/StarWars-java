@@ -20,8 +20,7 @@ public class SwapiApiTests {
     @Test
     public void getAllPlanets() throws Exception {
 
-        SwapiApi swapi = new SwapiApi(); 
-        SwapiPlanet planet = swapi.GetPlanet("Alderaan");
+        SwapiPlanet planet = SwapiApi.GetPlanet("Alderaan");
 
         assertThat(planet).isNotNull();
         assertThat(planet.name).isEqualTo("Alderaan");

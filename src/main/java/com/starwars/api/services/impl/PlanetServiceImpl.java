@@ -20,10 +20,9 @@ public class PlanetServiceImpl implements PlanetService {
     @Override
     public List<Planet> getAll() {
         List<Planet> planets = this.planetRepository.findAll();
-        SwapiApi swapi = new SwapiApi();
 
         planets.forEach(planet -> {
-            SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
+            SwapiPlanet apiSwapi = SwapiApi.GetPlanet(planet.getNome());
 
             if (apiSwapi != null) {
                 planet.setAparicoes(apiSwapi.filmsUrls.size());
@@ -36,10 +35,9 @@ public class PlanetServiceImpl implements PlanetService {
     @Override
     public List<Planet> findByName(String name) {
         List<Planet> planets = this.planetRepository.findByNome(name);
-        SwapiApi swapi = new SwapiApi();
 
         planets.forEach(planet -> {
-            SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
+            SwapiPlanet apiSwapi = SwapiApi.GetPlanet(planet.getNome());
 
             if (apiSwapi != null) {
                 planet.setAparicoes(apiSwapi.filmsUrls.size());
@@ -54,8 +52,7 @@ public class PlanetServiceImpl implements PlanetService {
         Planet planet = this.planetRepository.findById(id).orElse(null);
 
         if (planet != null) {
-            SwapiApi swapi = new SwapiApi();
-            SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
+            SwapiPlanet apiSwapi = SwapiApi.GetPlanet(planet.getNome());
 
             if (apiSwapi != null) {
                 planet.setAparicoes(apiSwapi.filmsUrls.size());
@@ -69,8 +66,7 @@ public class PlanetServiceImpl implements PlanetService {
     public Planet add(Planet planet) {
         this.planetRepository.save(planet);
 
-        SwapiApi swapi = new SwapiApi();
-        SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
+        SwapiPlanet apiSwapi = SwapiApi.GetPlanet(planet.getNome());
 
         if (apiSwapi != null) {
             planet.setAparicoes(apiSwapi.filmsUrls.size());
@@ -83,8 +79,7 @@ public class PlanetServiceImpl implements PlanetService {
     public Planet update(Planet planet) {
         this.planetRepository.save(planet);
 
-        SwapiApi swapi = new SwapiApi();
-        SwapiPlanet apiSwapi = swapi.GetPlanet(planet.getNome());
+        SwapiPlanet apiSwapi = SwapiApi.GetPlanet(planet.getNome());
 
         if (apiSwapi != null) {
             planet.setAparicoes(apiSwapi.filmsUrls.size());

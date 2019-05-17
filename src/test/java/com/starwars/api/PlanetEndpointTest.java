@@ -3,10 +3,13 @@ package com.starwars.api;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import com.starwars.api.models.Planet;
+import com.starwars.api.models.integrations.swapi.SwapiApi;
+import com.starwars.api.models.integrations.swapi.models.SwapiPlanet;
 import com.starwars.api.repository.PlanetRepository;
 
 import org.junit.Before;
@@ -24,6 +27,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import mockit.Mock;
+import mockit.MockUp;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -39,6 +45,17 @@ public class PlanetEndpointTest {
     public void Setup() {
         Optional<Planet> planet = Optional.of(new Planet("6cde21787c63594ca86852f2", "Hoth", "frozen", "tundra, ice caves, mountain ranges"));
         BDDMockito.when(planetRepository.findById(planet.get().getId())).thenReturn(planet);
+
+        new MockUp<SwapiApi>() {
+            @Mock
+            public SwapiPlanet GetPlanet(String name) {
+                SwapiPlanet planet = new SwapiPlanet();
+                planet.name = name;
+                planet.filmsUrls = Arrays.asList("1", "2", "5");
+                
+                return planet;
+            }
+        };
     }
 
     @Test
