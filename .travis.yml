@@ -1,9 +1,5 @@
 language: java
 
-sudo: false
-
-script: "mvn cobertura:cobertura"
-
 before_install:
   - chmod +x mvnw
   
