@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.com/diandsonc/StarWars.svg?branch=master)](https://travis-ci.com/diandsonc/StarWars)
-[![codecov](https://codecov.io/gh/diandsonc/StarWars/branch/master/graph/badge.svg)](https://codecov.io/gh/diandsonc/StarWars)
+[![Build Status](https://travis-ci.com/diandsonc/StarWars-java.svg?branch=master)](https://travis-ci.com/diandsonc/StarWars-java)
+[![codecov](https://codecov.io/gh/diandsonc/StarWars-java/branch/master/graph/badge.svg)](https://codecov.io/gh/diandsonc/StarWars-java)
 
 # StarWars API   
 API simples de cadastro de planetas com integração com https://swapi.co/. 
